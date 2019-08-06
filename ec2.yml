@@ -1,0 +1,16 @@
+---
+- hosts: all
+  connection: local
+  gather_facts: fasle
+  tasks: 
+  - name: to lanuch ec2 instance
+    ec2:
+      region: us-east-2
+      instance_type: t2.micro
+      key_name: mykey
+      image: ami-0520e698dd500b1d1
+      groups: ansible-sg
+      wait: yes
+      instance_tags:
+        Name: Test
+        Env: dev

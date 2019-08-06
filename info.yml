@@ -1,0 +1,15 @@
+---
+- hosts: all
+  connection: local
+  gather_facts: false
+  tasks:
+  - name: info about ec2-instance
+    ec2_instance_facts:
+     region: us-east-2
+     filters:
+      "tag:Env": test
+    register: ec2_info
+  - name: displaying output
+    debug: msg="{{item.instance_id}}"
+    with_item: "{{ec2_info.instances}}"
+    

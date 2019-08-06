@@ -1,0 +1,15 @@
+---
+- hosts: all
+  connection: local 
+  gather_facts: fasle
+  tasks: 
+  - name: to start the ec2-instance
+    ec2:
+      instance_ids: i-00e2aa0ae81c9e938
+      region: us-east-2
+      state: running
+      wait: yes
+    tags:
+     - start
+     - never
+      

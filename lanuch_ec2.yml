@@ -1,0 +1,12 @@
+---
+- hosts: localhost
+  tasks:
+  - name: lanuch ec2 instance
+    ec2:
+      key_name: mykey
+      instance_type: t2.micro
+      image: ami-05c1fa8df71875112
+      region: us-east-2
+      wait: yes
+                      
+

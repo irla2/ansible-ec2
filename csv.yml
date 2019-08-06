@@ -1,0 +1,17 @@
+---
+- hosts: all
+  connection: local
+  gather_facts: false
+  tasks:
+  - name: info ec2
+    ec2_instance_facts:
+     region: us-east-2
+     filters:
+      "tag:Env": test
+    register: out
+  - name: displying to ec2 instance
+    template :
+      src: generate_csv.j2
+      dest: ec2_instance_info.csv
+      
+

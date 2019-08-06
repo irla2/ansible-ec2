@@ -1,0 +1,12 @@
+---
+- hosts: all
+  connection: local
+  gather_facts: fasle
+  tasks: 
+  - name: to stop the instance
+    ec2: 
+      instance_ids: i-00e2aa0ae81c9e938
+      region: us-east-2
+      state: stopped
+      wait: yes
+      
